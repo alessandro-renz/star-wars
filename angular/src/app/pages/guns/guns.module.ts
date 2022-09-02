@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ListComponent } from './../shared/list/list.component';
+import { SharedModule } from './../../shared/shared.module';
 
 import { GunsRoutingModule } from './guns-routing.module';
 import { GunsComponent } from './guns.component';
@@ -8,12 +8,12 @@ import { GunsComponent } from './guns.component';
 
 @NgModule({
   declarations: [
-    GunsComponent,
-    ListComponent
+    GunsComponent
   ],
   imports: [
     CommonModule,
-    GunsRoutingModule
+    GunsRoutingModule,
+    SharedModule
   ]
 })
 export class GunsModule { }

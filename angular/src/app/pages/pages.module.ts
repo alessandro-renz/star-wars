@@ -3,13 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
 import { PagesRoutingModule } from './pages-routing.module';
-import { ListComponent } from './shared/list/list.component';
 
 
 @NgModule({
-  declarations: [
-    ListComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     PagesRoutingModule,

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ListComponent } from './../shared/list/list.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { StarWarsService } from './../../star-wars.service';
 
 import { CharactersRoutingModule } from './characters-routing.module';
 import { CharactersComponent } from './characters.component';
@@ -8,12 +10,16 @@ import { CharactersComponent } from './characters.component';
 
 @NgModule({
   declarations: [
-    CharactersComponent,
-    ListComponent
+    CharactersComponent
   ],
   imports: [
     CommonModule,
-    CharactersRoutingModule
+    CharactersRoutingModule,
+    SharedModule,
+    HttpClientModule
+  ],
+  providers: [
+    StarWarsService
   ]
 })
 export class CharactersModule { }

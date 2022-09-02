@@ -1,6 +1,34 @@
-<div id="personagens">
+<div id="personagens" class="pagina">
   <div class="container">
-    <h1>Personagens</h1>
-    <app-list></app-list>
+    <h1 class="title">Personagens</h1>
+    <div *ngIf="loading;else table" class="loading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <ng-template #table>
+      <table  class="table table-hover table-striped border">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Altura</th>
+            <th scope="col">Massa</th>
+            <th scope="col">Cor Olhos</th>
+            <th scope="col">Cor Cabelo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of characters">
+            <td>{{item.name}}</td>
+            <td>{{item.gender}}</td>
+            <td>{{item.height}}</td>
+            <td>{{item.mass}}</td>
+            <td>{{item.eye_color}}</td>
+            <td>{{item.hair_color}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
   </div>
 </div>

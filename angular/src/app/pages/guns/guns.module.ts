@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ListComponent } from './../shared/list/list.component';
 
 import { GunsRoutingModule } from './guns-routing.module';
 import { GunsComponent } from './guns.component';
@@ -7,7 +8,8 @@ import { GunsComponent } from './guns.component';
 
 @NgModule({
   declarations: [
-    GunsComponent
+    GunsComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,

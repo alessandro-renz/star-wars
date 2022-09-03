@@ -1,0 +1,40 @@
+<div id="detail">
+    <div class="container">
+        <h1 class="title">{{character.name}}</h1>
+        <div *ngIf="loading;else table" class="loading">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <ng-template #table>
+            <table class="table table-border">
+                <tbody>
+                    <tr>
+                        <td class="table-primary">Nome</td>
+                        <td>{{character.name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-primary">Sexo</td>
+                        <td>{{character.gender}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-primary">Altura</td>
+                        <td>{{character.height}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-primary">Massa</td>
+                        <td>{{character.mass}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-primary">Cor dos olhos</td>
+                        <td>{{character.eye_color}}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-primary">Cor do Cabelo</td>
+                        <td>{{character.hair_color}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+    </div>
+</div>

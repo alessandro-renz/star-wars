@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription, tap } from 'rxjs';
+import { Character } from 'src/app/models/character';
 import { StarWarsService } from './../../star-wars.service';
 
 @Component({
@@ -9,8 +11,11 @@ import { StarWarsService } from './../../star-wars.service';
 })
 export class CharactersComponent implements OnInit, OnDestroy {
 	loading = false
-	characters!: Array<{}>
-  subscription!: Subscription
+	qtdCharacters!: number
+	characters!: Array<Character>
+  	subscription!: Subscription
+	linkNext!: string
+	linkPrevious!: string
 
 	constructor(
 		private starWarsService: StarWarsService
@@ -20,19 +25,43 @@ export class CharactersComponent implements OnInit, OnDestroy {
 		this.loadCharacters()
 	}
 
-	private loadCharacters(){
-		this.loading = true
-		this.subscription = this.starWarsService.listCharacters()
-    .pipe(
-      tap(response => this.characters = response)
-    )
-    .subscribe(characteres => {
-      console.log(characteres)
-      this.loading = false
-    })
+	goToPrevious(){
+		if(!this.linkPrevious){
+			return
+		}
+		let length = this.linkPrevious.length - 1
+		let page = this.linkPrevious.slice(length)
+		
+		this.loadCharacters(parseInt(page))
 	}
 
-  ngOnDestroy(){
-    this.subscription.unsubscribe()
-  }
+	goToNext(){
+		if(!this.linkNext){
+			return
+		}
+		let length = this.linkNext.length - 1
+		let page = this.linkNext.slice(length)
+		
+		this.loadCharacters(parseInt(page))
+	}
+
+	private loadCharacters(page?: number){
+		this.loading = true
+		this.subscription = this.starWarsService.listCharacters(page)
+		.pipe(
+			tap(response => {
+				this.characters = response.results
+				this.qtdCharacters = response.count
+				this.linkNext = response.next
+				this.linkPrevious = response.previous
+			})
+		)
+		.subscribe(() => {
+			this.loading = false
+		})
+	}
+
+	ngOnDestroy(){
+		this.subscription.unsubscribe()
+	}
 }

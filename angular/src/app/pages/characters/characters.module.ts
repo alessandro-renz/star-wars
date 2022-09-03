@@ -6,11 +6,13 @@ import { StarWarsService } from './../../star-wars.service';
 
 import { CharactersRoutingModule } from './characters-routing.module';
 import { CharactersComponent } from './characters.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
   declarations: [
-    CharactersComponent
+    CharactersComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,

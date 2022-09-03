@@ -1,18 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ListComponent } from './list/list.component';
+import { PaginateComponent } from './paginate/paginate.component';
 
 
 
 @NgModule({
   declarations: [
-    ListComponent
+    ListComponent,
+    PaginateComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ListComponent
+    ListComponent,
+    PaginateComponent
   ]
 })
 export class SharedModule { }

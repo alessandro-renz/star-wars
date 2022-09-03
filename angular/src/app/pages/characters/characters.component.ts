@@ -49,7 +49,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
 		this.loading = true
 		this.subscription = this.starWarsService.listCharacters(page)
 		.pipe(
-			tap(response => {
+			tap((response: any) => {
 				this.characters = response.results
 				this.qtdCharacters = response.count
 				this.linkNext = response.next

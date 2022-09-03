@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, tap } from 'rxjs';
-import { Character } from 'src/app/models/character';
+import { StarShips } from 'src/app/models/starships';
 import { StarWarsService } from 'src/app/star-wars.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { StarWarsService } from 'src/app/star-wars.service';
 })
 export class DetailComponent implements OnInit {
   loading = false
-  character!: Character
+  starship!: StarShips
   subscription!: Subscription
 
   constructor(
@@ -20,18 +20,18 @@ export class DetailComponent implements OnInit {
   ) { }
   
   ngOnInit() {
-    this.loadCharacter()
+    this.loadStarShip()
   }
 
-  private loadCharacter(){
+  private loadStarShip(){
     this.loading = true 
-    this.subscription = this.starWarsService.getCharacter(this.activatedRoute.snapshot.queryParams['url'])
+    this.subscription = this.starWarsService.getStarShip(this.activatedRoute.snapshot.queryParams['url'])
     .pipe(
-      tap(char => this.character = char)
+      tap(starship => this.starship = starship)
     )
-    .subscribe(char => {
+    .subscribe(starship => {
       this.loading = false
-      console.log(char)
+      console.log(starship)
     })
   }
 

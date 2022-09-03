@@ -1,0 +1,35 @@
+<div id="ships" class="pagina">
+  <div class="container">
+    <div *ngIf="loading;else table" class="loading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <ng-template #table>
+      <app-list title="Naves" [quantity]="qtdStarShips">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Fabricante</th>
+            <th scope="col">Capacidade de carga</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of starShips">
+            <td>{{item.name}}</td>
+            <td>{{item.model}}</td>
+            <td>{{item.manufacturer}}</td>
+            <td>{{item.cargo_capacity}}</td>
+            <td>
+              <a [routerLink]="['starship']" [queryParams]="{ url: item.url}" class="btn btn-primary">+Detalhes</a>
+            </td>
+          </tr>
+        </tbody>
+      </app-list>
+
+      <app-paginate (clickPrevious)="goToPrevious()" (clickNext)="goToNext()"></app-paginate>
+    </ng-template>
+  </div>
+</div>

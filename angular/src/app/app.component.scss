@@ -12,4 +12,10 @@
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
   }
+
+  .container{
+    @media screen and (max-width: 768px){
+      overflow-x: scroll;
+    }
+  } 
 }

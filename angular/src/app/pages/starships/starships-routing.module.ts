@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GuardRouteGuard } from './../../guard-route.guard';
 import { DetailComponent } from './detail/detail.component';
 import { StarShipsComponent } from './starships.component';
 
@@ -10,7 +11,10 @@ const routes: Routes = [
   },
   {
     path: "starship",
-    component: DetailComponent
+    component: DetailComponent,
+    canActivate: [
+      GuardRouteGuard
+    ]
   }
 ];
 

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  isLogado = false
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    const token = localStorage.getItem("token")
+    if(token?.length){
+      this.isLogado = true
+    }
   }
 
 }

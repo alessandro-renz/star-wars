@@ -10,7 +10,8 @@ import { PagesRoutingModule } from './pages-routing.module';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    RouterModule
-  ]
+    RouterModule,
+  ],
+  
 })
 export class PagesModule { }

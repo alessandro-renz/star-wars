@@ -8,11 +8,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['']">Personagens</a>
+                    <a class="nav-link" [routerLink]="['pages/characters']">Personagens</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['starships']">Naves</a>
+                    <a class="nav-link" [routerLink]="['pages/starships']">Naves</a>
                 </li>
+                <li class="nav-item" *ngIf="isLogado">
+                  <a class="nav-link" [routerLink]="['logout']">Sair</a>
+              </li>
             </ul>
         </div>
     </div>
